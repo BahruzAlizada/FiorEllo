@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Esma\\Desktop\\Fiorello\\Fiorello\\Fiorello.csproj": {}
+    "C:\\Users\\Esma\\Desktop\\FiorEllo\\Fiorello\\Fiorello\\Fiorello.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Esma\\Desktop\\Fiorello\\Fiorello\\Fiorello.csproj": {
+    "C:\\Users\\Esma\\Desktop\\FiorEllo\\Fiorello\\Fiorello\\Fiorello.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Esma\\Desktop\\Fiorello\\Fiorello\\Fiorello.csproj",
+        "projectUniqueName": "C:\\Users\\Esma\\Desktop\\FiorEllo\\Fiorello\\Fiorello\\Fiorello.csproj",
         "projectName": "Fiorello",
-        "projectPath": "C:\\Users\\Esma\\Desktop\\Fiorello\\Fiorello\\Fiorello.csproj",
+        "projectPath": "C:\\Users\\Esma\\Desktop\\FiorEllo\\Fiorello\\Fiorello\\Fiorello.csproj",
         "packagesPath": "C:\\Users\\Esma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Esma\\Desktop\\Fiorello\\Fiorello\\obj\\",
+        "outputPath": "C:\\Users\\Esma\\Desktop\\FiorEllo\\Fiorello\\Fiorello\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Esma\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
