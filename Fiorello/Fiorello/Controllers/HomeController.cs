@@ -1,5 +1,8 @@
-﻿using Fiorello.Models;
+﻿using Fiorello.DAL;
+using Fiorello.Models;
+using Fiorello.VIewsModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,11 +13,22 @@ using System.Threading.Tasks;
 namespace Fiorello.Controllers
 {
     public class HomeController : Controller
-    {   
+    {
+        private readonly AppDbContext _db;
 
-        public IActionResult Index()
+        public HomeController(AppDbContext db)
         {
-            return View();
+            _db = db;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            HomeVM homeVM = new HomeVM
+            {
+                Categories = await _db.Categories.ToListAsync(),
+                Products = await _db.Products.ToListAsync()
+            };
+            return View(homeVM);
         }
 
 
