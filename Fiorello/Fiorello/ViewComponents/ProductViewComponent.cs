@@ -3,6 +3,7 @@ using Fiorello.VIewsModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fiorello.ViewComponents
@@ -21,7 +22,7 @@ namespace Fiorello.ViewComponents
             HomeVM homeVM = new HomeVM
             {
                 Products = await _db.Products.ToListAsync(),
-                Categories = await _db.Categories.ToListAsync()
+                Categories = await _db.Categories.Where(x=>!x.IsDeactive).ToListAsync()
             };
 
             return View(homeVM);
