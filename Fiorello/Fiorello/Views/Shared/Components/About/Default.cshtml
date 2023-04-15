@@ -1,0 +1,23 @@
+﻿@model HomeVM
+
+                    <div class="col-lg-6">
+                        <div class="img">
+                            <img src="~/img/@Model.About.Image" class="img-fluid" alt="">
+                            <div
+                                @*class="player position-absolute rounded-circle d-flex align-items-center justify-content-center"*@>
+                                @*<i class="fas fa-play fa-lg"></i>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-text mt-5 mt-lg-0 px-lg-5">
+                            <h1>@Html.Raw(Model.About.Title)</h1>
+                            <p class="py-3">@Model.About.Description</p>
+                            <ul class="list-unstyled">
+                          @foreach (AboutInfo item in Model.AboutInfo)
+                           {
+                            <li class="mt-3"><img src="~/img/h1-custom-icon.png" class="mr-2" alt=""> @item.Name</li class="mt-3">
+                           }   
+                            </ul>
+                        </div>
+                    </div>

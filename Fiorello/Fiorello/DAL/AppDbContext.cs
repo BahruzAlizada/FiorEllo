@@ -15,5 +15,7 @@ namespace Fiorello.DAL
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SliderInfo> SliderInfo { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<About> About { get; set; }
+        public DbSet<AboutInfo> AboutInfo { get; set; }
     }
 }

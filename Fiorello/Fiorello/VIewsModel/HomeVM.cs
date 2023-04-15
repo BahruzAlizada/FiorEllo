@@ -9,5 +9,7 @@ namespace Fiorello.VIewsModel
         public List<Product> Products { get; set; }
         public List<Slider> Sliders { get; set; }
         public SliderInfo SliderInfo { get; set; }
+        public About About { get; set; }
+        public List<AboutInfo> AboutInfo { get; set; }
     }
 }
