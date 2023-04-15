@@ -154,3 +154,12 @@ C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Views\Sh
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Views\Shared\Components\Blog\Default.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Views\Shared\Components\About\Default.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Create.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Update.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Detail.cshtml.g.cs
