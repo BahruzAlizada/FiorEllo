@@ -79,6 +79,83 @@ namespace Fiorello.Areas.Admin.Controllers
 
         }
 
+        public async Task<IActionResult> Update(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Product dbproduct = await _db.Products.FirstOrDefaultAsync(x => x.Id ==id);
+            if (dbproduct == null)
+            {
+                return BadRequest();
+            }
+
+            ViewBag.Categories = await _db.Categories.ToListAsync();
+
+            return View(dbproduct);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Update(int? id, Product product,int categoryId)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Product dbproduct = await _db.Products.FirstOrDefaultAsync(x=>x.Id==id);
+            if (dbproduct == null)
+            {
+                return BadRequest();
+            }
+
+            ViewBag.Categories = await _db.Categories.ToListAsync();
+
+            bool isExist = await _db.Products.AnyAsync(x=>x.Name==product.Name && x.Id!=product.Id);
+            if (isExist)
+            {
+                ModelState.AddModelError("Name", "This name already is exist!");
+                return View();
+            }
+
+            #region PhotoSave
+            if (product.Photo != null)
+            {
+                if (!product.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Selecet Image Type");
+                    return View();
+                }
+
+                if (product.Photo.IsOlder216Kb())
+                {
+                    ModelState.AddModelError("Photo", "Max 216Kb");
+                    return View();
+                }
+
+                string folder = Path.Combine(_env.WebRootPath, "img");
+                product.Image = await product.Photo.SaveFileAsync(folder);
+                string path = Path.Combine(_env.WebRootPath, folder, dbproduct.Image);
+                if(System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                dbproduct.Image = product.Image;
+            }
+            #endregion
+
+
+            dbproduct.Name = product.Name;
+            dbproduct.Price = product.Price;
+
+            
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+        }
+
         public async Task<IActionResult> Activity(int? Id)
         {
             if (Id == null)

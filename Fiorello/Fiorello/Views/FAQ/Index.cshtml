@@ -1,0 +1,63 @@
+﻿
+@{
+	ViewBag.Title = "FAQ";
+}
+
+
+
+<section id="shop-list-title">
+    <div class="container py-4">
+        <div class="row py-5">
+            <div class="col-12">
+                <h1>FAQ</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@model List<Faq>
+
+<!--FAQ start-->
+  <section class="FAQ" style="padding-top:80px;">
+        <div class="container">
+        <div class="row py-5">
+      
+            <div class="col-md-8 col-lg-8">
+
+              <div class="sol">
+                    <ol>
+                        @foreach(Faq faq in Model)
+                        {
+                            <li>
+                                <h4 style="padding:10px 0;color: #2b2b2b;font-weight:400;color:red;">@faq.Title</h4>
+                                <p style="color: #6d6a6a;">@faq.Description</p>
+                            </li>
+                        }
+                    </ol>
+              </div>
+
+            </div>
+
+            <div class="col-md-4 col-lg-4">
+                <div style="padding:10px 15px;">
+
+                    @using (Html.BeginForm("Index", "FAQ", FormMethod.Get))
+                    {
+                        <input type="text" name="searchString" placeholder="Search...">
+                        <button style="margin-right:10px;" type="submit"><i class="fas fa-search my-auto" id="search"></i></button>
+                    }
+
+                    <h6 style="padding:10px 10px;color: #2b2b2b;font-weight:400;color:red;">FREQUENTLY ASKED QUESTIONS</h6>
+                    @foreach(Faq faq in Model)
+                    {
+                        <p>@faq.Title</p>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </section>
