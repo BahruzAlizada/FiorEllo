@@ -186,6 +186,9 @@
                             <ul class="nav flex-column sub-menu">
                                 <li style="list-style:none;" class="nav-item"> <a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a></li>
                                 <li style="list-style:none;" class="nav-item"> <a class="nav-link" asp-controller="Products" asp-action="Index">Products</a></li>
+                                <li style="list-style:none;" class="nav-item"> <a class="nav-link" asp-controller="Positions" asp-action="Index">Positions</a></li>
+                                <li style="list-style:none;" class="nav-item"> <a class="nav-link" asp-controller="Experts" asp-action="Index">Experts</a></li>
+
                             </ul>
                         </div>
                     </li>
@@ -278,6 +281,7 @@
     <script src="~/Admin/js/dashboard.js"></script>
     <script src="~/Admin/js/data-table.js"></script>
     <script src="~/Admin/js/jquery.dataTables.js"></script>
+    @RenderSection("Scripts",false)
     <script src="~/Admin/js/dataTables.bootstrap4.js"></script>
     <!-- End custom js for this page-->
     <script src="~/Admin/js/jquery.cookie.js" type="text/javascript"></script>

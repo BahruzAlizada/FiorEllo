@@ -1,19 +1,19 @@
-﻿@model Category
+﻿@model Position
 
 <div class="row">
     <div class="col-8">
         <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Create Category</h5>
-                
+                <h5 class="mb-0">Update Position</h5>
+
             </div>
             <div class="card-body">
                 <form method="post">
 
                     <div class="mb-3 form-group">
-                        <label asp-for="Name" class="form-label">Name</label>
-                        <input asp-for="Name" type="text" class="form-control"/>
-                        <span class="text-danger" asp-validation-for="Name"></span>
+                        <label asp-for="PositionName" class="form-label">Name</label>
+                        <input asp-for="PositionName" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="PositionName"></span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -23,3 +23,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
