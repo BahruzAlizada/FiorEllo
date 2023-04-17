@@ -53,12 +53,6 @@ namespace Fiorello.Areas.Admin.Controllers
             if (dbposition == null)
                 return BadRequest();
 
-            bool isExist = await _db.Positions.AnyAsync(x=>x.PositionName == dbposition.PositionName && x.Id!=dbposition.Id);
-            if (isExist)
-            {
-                ModelState.AddModelError("PositionName", "This Position already is Exist!");
-                return View();
-            }
 
             return View(dbposition);
         }

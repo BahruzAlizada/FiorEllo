@@ -42,13 +42,6 @@ namespace Fiorello.Areas.Admin.Controllers
                 return View();
             }
 
-            if (category.Name == null)
-            {
-                ModelState.AddModelError("Name", "Category Name can not be null !");
-                return View();
-            }
-
-
             await _db.Categories.AddAsync(category);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -57,14 +50,10 @@ namespace Fiorello.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int? Id)
         {
             if (Id == null)
-            {
                 return NotFound();
-            }
             Category dbcategory = await _db.Categories.FirstOrDefaultAsync(x=>x.Id==Id);
             if (dbcategory == null)
-            {
                 return BadRequest();
-            }
 
             return View(dbcategory);
         }
@@ -75,27 +64,18 @@ namespace Fiorello.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int? Id,Category category)
         {
             if (Id == null)
-            {
                 return NotFound();
-            }
             Category dbcategory = await _db.Categories.FirstOrDefaultAsync(x => x.Id == Id);
             if (dbcategory == null)
-            {
                 return BadRequest();
-            }
 
-            bool isExist = await _db.Categories.AnyAsync(x=>x.Name==category.Name&&x.Id!=Id);
+            bool isExist = await _db.Categories.AnyAsync(x=>x.Name==category.Name && x.Id!=Id);
            if(isExist)
             {
              ModelState.AddModelError("Name","This Category Name already is Exist !");
                 return View();
             }
 
-            if (category.Name == null)
-            {
-                ModelState.AddModelError("Name", "Category Name can not be null");
-                return View();
-            }
 
             dbcategory.Name = category.Name;
             await _db.SaveChangesAsync();
@@ -105,14 +85,10 @@ namespace Fiorello.Areas.Admin.Controllers
         public async Task<IActionResult> Detail(int? Id)
         {
             if (Id == null)
-            {
                 return NotFound();
-            }
             Category dbcategory = await _db.Categories.FirstOrDefaultAsync(x => x.Id == Id);
             if (dbcategory == null)
-            {
                 return BadRequest();
-            }
 
             return View(dbcategory);
         }
@@ -120,14 +96,10 @@ namespace Fiorello.Areas.Admin.Controllers
         public async Task<IActionResult> Activity(int? Id)
         {
             if (Id == null)
-            {
                 return NotFound();
-            }
             Category dbcategory = await _db.Categories.FirstOrDefaultAsync(x => x.Id == Id);
             if (dbcategory == null)
-            {
                 return BadRequest();
-            }
 
             if (dbcategory.IsDeactive)
             {

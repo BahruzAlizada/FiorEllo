@@ -3,6 +3,7 @@ using Fiorello.VIewsModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fiorello.ViewComponents
@@ -20,8 +21,8 @@ namespace Fiorello.ViewComponents
         {
             HomeVM homeVM = new HomeVM
             {
-                Experts = await _db.Experts.ToListAsync(),
-                Positions = await _db.Positions.ToListAsync(),
+                Experts = await _db.Experts.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).Take(4).ToListAsync(),
+                Positions = await _db.Positions.Where(x=>!x.IsDeactive).ToListAsync(),
             };
             return View(homeVM);
         }
