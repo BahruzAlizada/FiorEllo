@@ -82,14 +82,10 @@ namespace Fiorello.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
             Product dbproduct = await _db.Products.FirstOrDefaultAsync(x => x.Id ==id);
             if (dbproduct == null)
-            {
                 return BadRequest();
-            }
 
             ViewBag.Categories = await _db.Categories.ToListAsync();
 
@@ -101,17 +97,14 @@ namespace Fiorello.Areas.Admin.Controllers
 
         public async Task<IActionResult> Update(int? id, Product product,int categoryId)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            Product dbproduct = await _db.Products.FirstOrDefaultAsync(x=>x.Id==id);
-            if (dbproduct == null)
-            {
-                return BadRequest();
-            }
-
             ViewBag.Categories = await _db.Categories.ToListAsync();
+
+            if (id == null)
+                return NotFound();
+            Product dbproduct = await _db.Products.FirstOrDefaultAsync(x=>x.Id==id);
+            if(dbproduct==null)
+                return BadRequest();
+
 
             bool isExist = await _db.Products.AnyAsync(x=>x.Name==product.Name && x.Id!=product.Id);
             if (isExist)
@@ -146,14 +139,23 @@ namespace Fiorello.Areas.Admin.Controllers
             }
             #endregion
 
-
+            dbproduct.CategoryId = categoryId;
             dbproduct.Name = product.Name;
             dbproduct.Price = product.Price;
-
             
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
 
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id == null)
+                return NotFound();
+            Product dbproduct = await _db.Products.Include(x=>x.Category).FirstOrDefaultAsync(x => x.Id == id);
+            if (dbproduct == null)
+                return BadRequest();
+
+            return View(dbproduct);
         }
 
         public async Task<IActionResult> Activity(int? Id)

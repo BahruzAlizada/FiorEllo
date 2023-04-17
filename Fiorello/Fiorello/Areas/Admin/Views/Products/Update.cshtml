@@ -33,9 +33,14 @@
                         <label for="exampleFormControlSelect1">Example select</label>
                         <select class="form-control" name="categoryId">
                             @foreach (Category category in ViewBag.Categories)
-                            {
-                                <option value="@category.Id">@category.Name</option>
-                            }
+                                if (Model.CategoryId == category.Id)
+                                {
+                                    <option selected value="@category.Id">@category.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
                         </select>
                     </div>
 
@@ -46,3 +51,6 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
