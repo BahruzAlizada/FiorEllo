@@ -18,5 +18,7 @@ namespace Fiorello.DAL
         public DbSet<About> About { get; set; }
         public DbSet<AboutInfo> AboutInfo { get; set; }
         public DbSet<Faq> Faqs { get; set; }
+        public DbSet<Expert> Experts { get; set; }
+        public DbSet<Position> Positions {get; set; }
     }
 }

@@ -1,0 +1,16 @@
+﻿@model HomeVM
+
+@foreach(Expert expert in Model.Experts)
+{
+    <div class="col-md-6 col-lg-3">
+            <div class="item text-center">
+                <div class="img">
+                    <img src="~/img/@expert.Image" class="img-fluid rounded-circle" alt="">
+                </div>
+                <div class="text mt-3">
+                    <h6>@expert.FullName</h6>
+                        <p class="text-black-50">@expert.Position.PositionName.</p>
+                </div>
+            </div>
+    </div>
+}

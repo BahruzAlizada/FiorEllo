@@ -11,5 +11,7 @@ namespace Fiorello.VIewsModel
         public SliderInfo SliderInfo { get; set; }
         public About About { get; set; }
         public List<AboutInfo> AboutInfo { get; set; }
+        public List<Expert> Experts { get; set; }
+        public List<Position> Positions { get; set; }
     }
 }
