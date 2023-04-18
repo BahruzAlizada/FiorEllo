@@ -21,7 +21,7 @@ namespace Fiorello.ViewComponents
         {
             HomeVM homeVM = new HomeVM
             {
-                Products = await _db.Products.ToListAsync(),
+                Products = await _db.Products.Where(x=>!x.IsDeactive).ToListAsync(),
                 Categories = await _db.Categories.Where(x=>!x.IsDeactive).ToListAsync()
             };
 

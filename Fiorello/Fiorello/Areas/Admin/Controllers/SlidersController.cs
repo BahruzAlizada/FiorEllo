@@ -36,7 +36,7 @@ namespace Fiorello.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
+    
         public async Task<IActionResult> Create(Slider slider)
         {
             #region Photo
