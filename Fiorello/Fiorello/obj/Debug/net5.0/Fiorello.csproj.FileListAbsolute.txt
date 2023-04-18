@@ -177,3 +177,6 @@ C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Ad
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Experts\Detail.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Experts\Update.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Products\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\SliderInfo\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\SliderInfo\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\SliderInfo\Update.cshtml.g.cs
