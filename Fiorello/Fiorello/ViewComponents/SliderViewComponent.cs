@@ -3,6 +3,7 @@ using Fiorello.VIewsModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fiorello.ViewComponents
@@ -20,7 +21,7 @@ namespace Fiorello.ViewComponents
         {
             HomeVM homeVM = new HomeVM
             {
-                Sliders = await _db.Sliders.ToListAsync(),
+                Sliders = await _db.Sliders.OrderByDescending(x=>x.Id).Where(x=>!x.IsDeactive).ToListAsync(),
                 SliderInfo = await _db.SliderInfo.FirstOrDefaultAsync()
             };
 

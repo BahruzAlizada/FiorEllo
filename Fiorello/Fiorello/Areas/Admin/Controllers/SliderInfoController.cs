@@ -11,11 +11,9 @@ namespace Fiorello.Areas.Admin.Controllers
     public class SliderInfoController : Controller
     {
         private readonly AppDbContext _db;
-        private readonly IWebHostEnvironment _env;
 
-        public SliderInfoController(AppDbContext db,IWebHostEnvironment env)
+        public SliderInfoController(AppDbContext db)
         {
-            _env = env;
             _db = db;
         }
 
