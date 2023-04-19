@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 namespace Fiorello.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class PositionsController : Controller
+    public class AboutInfosController : Controller
     {
         private readonly AppDbContext _db;
 
-        public PositionsController(AppDbContext db)
+        public AboutInfosController(AppDbContext db)
         {
             _db = db;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Position> positions = await _db.Positions.ToListAsync();
-            return View(positions);
+            List<AboutInfo> aboutInfos = await _db.AboutInfo.ToListAsync();
+            return View(aboutInfos);
         }
 
         public async Task<IActionResult> Create()
@@ -31,16 +31,16 @@ namespace Fiorello.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Create(Position position)
+        public async Task<IActionResult> Create(AboutInfo aboutInfo)
         {
-            bool isExist = await _db.Positions.AnyAsync(x=>x.PositionName==position.PositionName);
+            bool isExist=await _db.AboutInfo.AnyAsync(x=>x.Name==aboutInfo.Name);
             if (isExist)
             {
-                ModelState.AddModelError("PositionName", "This Position already is Exist!");
+                ModelState.AddModelError("Name", "This title already is Exist!");
                 return View();
             }
 
-            await _db.Positions.AddAsync(position);
+            await _db.AboutInfo.AddAsync(aboutInfo);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -49,33 +49,32 @@ namespace Fiorello.Areas.Admin.Controllers
         {
             if (id == null)
                 return NotFound();
-            Position dbposition = await _db.Positions.FirstOrDefaultAsync(x => x.Id == id);
-            if (dbposition == null)
+            AboutInfo dbaboutinfo = await _db.AboutInfo.FirstOrDefaultAsync(x => x.Id == id);
+            if (dbaboutinfo == null)
                 return BadRequest();
 
-
-            return View(dbposition);
+            return View(dbaboutinfo);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Update(int? id,Position position)
+        public async Task<IActionResult> Update(int? id,AboutInfo aboutInfo)
         {
             if (id == null)
                 return NotFound();
-            Position dbposition = await _db.Positions.FirstOrDefaultAsync(x=>x.Id==id);
-            if (dbposition == null)
+            AboutInfo dbaboutinfo = await _db.AboutInfo.FirstOrDefaultAsync(x => x.Id == id);
+            if (dbaboutinfo == null)
                 return BadRequest();
 
-            bool isExist = await _db.Positions.AnyAsync(x => x.PositionName == position.PositionName && x.Id != position.Id);
+            bool isExist = await _db.AboutInfo.AnyAsync(x=>x.Name==aboutInfo.Name && x.Id!=aboutInfo.Id);
             if (isExist)
             {
-                ModelState.AddModelError("PositionName", "This Position already is Exist!");
+                ModelState.AddModelError("Name", "This title already is Exist!");
                 return View();
             }
 
-            dbposition.PositionName = position.PositionName;
+            dbaboutinfo.Name = aboutInfo.Name;
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -84,26 +83,25 @@ namespace Fiorello.Areas.Admin.Controllers
         {
             if (id == null)
                 return NotFound();
-            Position dbposition = await _db.Positions.FirstOrDefaultAsync(x => x.Id == id);
-            if (dbposition == null)
+            AboutInfo dbaboutinfo = await _db.AboutInfo.FirstOrDefaultAsync(x => x.Id == id);
+            if (dbaboutinfo == null)
                 return BadRequest();
-           
 
-            return View(dbposition);
+            return View(dbaboutinfo);
         }
 
         public async Task<IActionResult> Activity(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return NotFound();
-            Position dbposition = await _db.Positions.FirstOrDefaultAsync(x=>x.Id==id);
-            if (dbposition == null)
+            AboutInfo dbaboutinfo = await _db.AboutInfo.FirstOrDefaultAsync(x => x.Id == id);
+            if (dbaboutinfo == null)
                 return BadRequest();
 
-            if(dbposition.IsDeactive)
-                dbposition.IsDeactive = false;
+            if(dbaboutinfo.IsDeactive)
+                dbaboutinfo.IsDeactive= false;
             else
-                dbposition.IsDeactive = true;
+                dbaboutinfo.IsDeactive=true;
 
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");

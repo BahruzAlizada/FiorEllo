@@ -185,3 +185,10 @@ C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Ad
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Sliders\Create.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\Sliders\Update.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Views\Shop\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\About\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\About\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\About\Update.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\AboutInfos\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\AboutInfos\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\AboutInfos\Create.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\AboutInfos\Update.cshtml.g.cs
