@@ -27,7 +27,7 @@
                </div>
             </div>
             
-            <div style="padding:15px 0;" class="col-md-6">
+           <div style="padding:15px 0;" class="col-md-6">
                 <div>
                     <h1 style="color:#2b2b2b;font-size:37px;line-height: 1.447em;">@Model.Name</h1>
                     <p style="color:#afafaf;">$@Model.Price</p>
@@ -37,6 +37,8 @@
 
                     <div style="padding:12px 0;">
                         <h6>Additional Information</h6>
+                        <p style="color: #6d6a6a;"> Category : @Model.Category.Name</p>
+                        <p style="color: #6d6a6a;">Tags : @Model.ProductDetail.Tags</p>
                         <p style="color: #6d6a6a;">Weight : @Model.ProductDetail.Weight kg</p>
                     </div>
 
@@ -50,33 +52,18 @@
                 </div>
             </div>
 
-
-           <div class="col-md-10" style="padding:50px 0">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label" >Name</label>
-                        <input style="height:45px;" type="text" class="form-control"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input style="height:45px;" type="email" class="form-control" />
-                    </div>
-                  
-                    <div class="mb-3">
-                        <label class="form-label">Message</label>
-                        <textarea style="height:130px;" class="form-control"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-danger">Submit</button>
-                </form>
-           </div>
-
-
-
-
         </div>
     </div>
 </section>
 
+<section id="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="padding:60px 0; text-align:center;">Related Products</h2>
+            </div>
+        </div>
+        @await Component.InvokeAsync("Product",new {take=4})
+    </div>
+</section>
 

@@ -7,6 +7,7 @@ namespace Fiorello.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public string Weight { get; set; }
+        public string Tags { get; set; }
         public Product Product { get; set; }
         [ForeignKey("Product")]
         public int ProductId { get; set; }

@@ -23,6 +23,8 @@ namespace Fiorello.Controllers
 
         public async Task<IActionResult> Detail(int? id)
         {
+            Product product = await _db.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == id);
+            
             if (id == null)
                 return NotFound();
             Product dbproduct = await _db.Products.Include(x=>x.ProductDetail).FirstOrDefaultAsync(x=>x.Id == id);

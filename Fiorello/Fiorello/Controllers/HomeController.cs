@@ -21,10 +21,14 @@ namespace Fiorello.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            
-            return View();
+            HomeVM homeVM = new HomeVM
+            {
+                Categories = await _db.Categories.Where(x=>!x.IsDeactive).ToListAsync(),
+                Products = await _db.Products.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).ToListAsync()
+            };
+            return View(homeVM);
         }
 
 

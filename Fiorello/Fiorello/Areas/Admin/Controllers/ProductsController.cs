@@ -30,6 +30,8 @@ namespace Fiorello.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
+            Product dbproduct = await _db.Products.Include(x=>x.ProductDetail).FirstOrDefaultAsync();
+
             ViewBag.Categories = await _db.Categories.ToListAsync();
             return View();
         }
@@ -39,6 +41,8 @@ namespace Fiorello.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(Product product,int categoryId)
         {
+            Product dbproduct = await _db.Products.Include(x => x.ProductDetail).FirstOrDefaultAsync();
+
             ViewBag.Categories = await _db.Categories.ToListAsync();
 
             bool isExist = await _db.Products.AnyAsync(x => x.Name == product.Name);
@@ -83,7 +87,7 @@ namespace Fiorello.Areas.Admin.Controllers
         {
             if (id == null)
                 return NotFound();
-            Product dbproduct = await _db.Products.FirstOrDefaultAsync(x => x.Id ==id);
+            Product dbproduct = await _db.Products.Include(x=>x.ProductDetail).FirstOrDefaultAsync(x => x.Id ==id);
             if (dbproduct == null)
                 return BadRequest();
 
@@ -101,7 +105,7 @@ namespace Fiorello.Areas.Admin.Controllers
 
             if (id == null)
                 return NotFound();
-            Product dbproduct = await _db.Products.FirstOrDefaultAsync(x=>x.Id==id);
+            Product dbproduct = await _db.Products.Include(x=>x.ProductDetail).FirstOrDefaultAsync(x=>x.Id==id);
             if(dbproduct==null)
                 return BadRequest();
 
@@ -138,7 +142,9 @@ namespace Fiorello.Areas.Admin.Controllers
                 dbproduct.Image = product.Image;
             }
             #endregion
-
+            dbproduct.ProductDetail.Weight = product.ProductDetail.Weight;
+            dbproduct.ProductDetail.Tags=product.ProductDetail.Tags;
+            dbproduct.ProductDetail.Description = product.ProductDetail.Description;
             dbproduct.CategoryId = categoryId;
             dbproduct.Name = product.Name;
             dbproduct.Price = product.Price;
@@ -149,6 +155,7 @@ namespace Fiorello.Areas.Admin.Controllers
 
         public async Task<IActionResult> Detail(int? id)
         {
+            Product product = await _db.Products.Include(x => x.ProductDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (id == null)
                 return NotFound();
             Product dbproduct = await _db.Products.Include(x=>x.Category).FirstOrDefaultAsync(x => x.Id == id);

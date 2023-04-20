@@ -1,8 +1,10 @@
 ﻿using Fiorello.DAL;
+using Fiorello.Models;
 using Fiorello.VIewsModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,15 +19,16 @@ namespace Fiorello.ViewComponents
             _db = db;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(int take)
         {
-            HomeVM homeVM = new HomeVM
-            {
-                Products = await _db.Products.Where(x=>!x.IsDeactive).ToListAsync(),
-                Categories = await _db.Categories.Where(x=>!x.IsDeactive).ToListAsync()
-            };
+            List<Product> product = new List<Product>();
 
-            return View(homeVM);
+            if(take==0)
+                product = await _db.Products.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).ToListAsync();
+            else
+                product = await _db.Products.Where(x => !x.IsDeactive).OrderByDescending(x=>x.Id).Take(take).ToListAsync();
+
+            return View(product);
         }
     }
 }

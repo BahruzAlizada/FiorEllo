@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Fiorello Home";
 }
+
+@model HomeVM
+
 <!-- SLIDER START -->
 
         <section id="slider">
@@ -13,7 +16,51 @@
 
         <section id="products">
             <div class="container">
-             @await Component.InvokeAsync("Product")
+        <div class="row pt-5">
+            <div class="col-12 d-flex justify-content-between">
+                <ul class="category-mobile d-md-none list-unstyled">
+                    <li>
+                        <a href="" class="categories mr-2">Categories</a>
+                        <i class="fas fa-caret-down"></i>
+                        <ul class="category list-unstyled" style="display: none;">
+                            <li><a href="" data-id="all">All</a></li>
+                            @foreach (Category category in Model.Categories)
+                            {
+                                <li><a href="" data-id="category-@category.Id">@category.Name</a></li>
+                            }
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="category d-none d-md-flex list-unstyled">
+                    <li><a href="" data-id="all">All</a></li>
+                    @foreach (Category category in Model.Categories)
+                    {
+                        <li><a href="" data-id="category-@category.Id">@category.Name</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Product product in Model.Products)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item text-center" data-id="category-@product.CategoryId">
+                        <div class="img">
+                            <a asp-controller="Shop" asp-action="Detail" asp-route-id="@product.Id">
+                                <img src="~/img/@product.Image" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="title mt-3">
+                            <h6>@product.Name</h6>
+                        </div>
+                        <div class="price">
+                            <span class="text-black-50">Add to Cart</span>
+                            <span class="text-black-50">$@product.Price</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
             </div>
         </section>
 
