@@ -2,6 +2,8 @@
 using Fiorello.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fiorello.Controllers
@@ -15,8 +17,9 @@ namespace Fiorello.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ViewBag.ProductsCount = await _db.Products.Where(x=>!x.IsDeactive).CountAsync();
 
             return View();
         }
@@ -31,8 +34,13 @@ namespace Fiorello.Controllers
             if (dbproduct == null)
                 return BadRequest();
 
-            return View(dbproduct);
-                 
+            return View(dbproduct);     
+        }
+
+        public async Task<IActionResult> LoadMore(int skipCount)
+        {
+			List<Product> product = await _db.Products.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).Skip(skipCount).Take(8).ToListAsync();
+            return PartialView("_LoadMoreProductsPartial",product);
         }
     }
 }

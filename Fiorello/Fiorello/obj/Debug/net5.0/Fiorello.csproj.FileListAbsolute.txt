@@ -192,3 +192,4 @@ C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Ad
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\AboutInfos\Detail.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\AboutInfos\Create.cshtml.g.cs
 C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Areas\Admin\Views\AboutInfos\Update.cshtml.g.cs
+C:\Users\Esma\Desktop\FiorEllo\Fiorello\Fiorello\obj\Debug\net5.0\Razor\Views\Shared\_LoadMoreProductsPartial.cshtml.g.cs

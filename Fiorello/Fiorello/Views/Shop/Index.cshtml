@@ -17,9 +17,21 @@
 
         <section id="products">
             <div class="container">
+                <div class="row" id="myproduct">
         @await Component.InvokeAsync("Product",new {take=0})
+        </div>
+
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center my-3">
+                    <a id="loadMore" class="btn btn-secondary text-white">Load More</a>
+                    <input type="hidden" value="@ViewBag.ProductsCount" />
+                </div>
+            </div>
+            
             </div>
         </section>
 
         <!-- PRODUCTS END -->
-
+@section Scriptss{
+    <script asp-append-version="true" src="~/js/loadMore.js"></script>
+}

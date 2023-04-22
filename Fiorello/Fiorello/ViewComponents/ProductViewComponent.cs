@@ -21,10 +21,11 @@ namespace Fiorello.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int take)
         {
+
             List<Product> product = new List<Product>();
 
             if(take==0)
-                product = await _db.Products.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).ToListAsync();
+                product = await _db.Products.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).Take(8).ToListAsync();
             else
                 product = await _db.Products.Where(x => !x.IsDeactive).OrderByDescending(x=>x.Id).Take(take).ToListAsync();
 

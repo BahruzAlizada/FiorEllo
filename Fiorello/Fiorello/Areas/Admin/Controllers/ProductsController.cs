@@ -30,7 +30,7 @@ namespace Fiorello.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            Product dbproduct = await _db.Products.Include(x=>x.ProductDetail).FirstOrDefaultAsync();
+            Product dbproduct = await _db.Products.FirstOrDefaultAsync();
 
             ViewBag.Categories = await _db.Categories.ToListAsync();
             return View();
@@ -41,7 +41,7 @@ namespace Fiorello.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(Product product,int categoryId)
         {
-            Product dbproduct = await _db.Products.Include(x => x.ProductDetail).FirstOrDefaultAsync();
+            Product dbproduct = await _db.Products.FirstOrDefaultAsync();
 
             ViewBag.Categories = await _db.Categories.ToListAsync();
 
